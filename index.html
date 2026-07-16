@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local File Storage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Local File Storage</h1>
+            <p>Manage your files across two storage locations</p>
+        </header>
+
+        <div class="main-content">
+            <div class="storage-section">
+                <div class="storage-box" id="allFilesBox">
+                    <div class="storage-header">
+                        <h2>All Files</h2>
+                        <span class="file-count" id="allFilesCount">0 files</span>
+                    </div>
+                    <div class="file-list" id="allFilesList">
+                        <p class="empty-msg">No files yet. Upload files here.</p>
+                    </div>
+                    <div class="storage-actions">
+                        <input type="file" id="uploadAllFiles" multiple style="display: none;">
+                        <button class="btn btn-upload" onclick="document.getElementById('uploadAllFiles').click()">
+                            Upload Files
+                        </button>
+                        <button class="btn btn-select" id="selectAllBtn" onclick="toggleSelectMode('all')">
+                            Select Files
+                        </button>
+                    </div>
+                </div>
+
+                <div class="transfer-controls">
+                    <button class="btn btn-transfer" id="copyToPenDrive" onclick="copySelectedToPenDrive()" disabled>
+                        Copy to Pen Drive →
+                    </button>
+                    <button class="btn btn-transfer" id="copyToAllFiles" onclick="copySelectedToAllFiles()" disabled>
+                        ← Copy to All Files
+                    </button>
+                </div>
+
+                <div class="storage-box" id="penDriveBox">
+                    <div class="storage-header">
+                        <h2>Pen Drive</h2>
+                        <span class="file-count" id="penDriveCount">0 files</span>
+                    </div>
+                    <div class="file-list" id="penDriveList">
+                        <p class="empty-msg">No files yet. Upload files here.</p>
+                    </div>
+                    <div class="storage-actions">
+                        <input type="file" id="uploadPenDrive" multiple style="display: none;">
+                        <button class="btn btn-upload" onclick="document.getElementById('uploadPenDrive').click()">
+                            Upload Files
+                        </button>
+                        <button class="btn btn-select" id="selectPenBtn" onclick="toggleSelectMode('pen')">
+                            Select Files
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="logs-section">
+                <div class="logs-header">
+                    <h2>Activity Logs</h2>
+                    <button class="btn btn-clear" onclick="clearLogs()">Clear Logs</button>
+                    <button class="btn btn-download" onclick="downloadLogs()">Download Logs</button>
+                </div>
+                <div class="logs-container" id="logsContainer">
+                    <p class="empty-msg">No activity recorded yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="previewTitle">File Preview</h3>
+            <div id="previewContent"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
